@@ -34,6 +34,10 @@ class App {
 
   public static void main(String[] args) {
 
+    int x = 5; // declare and initialize a variable
+
+    // datatype[] arrayName; // declare an array
+    // a data type like String, int, double, etc. 
     int[] numbers; // declare an array of integers
     numbers = new int[5]; // initialize or create an array of 5 integers
 
@@ -47,6 +51,8 @@ class App {
     numbers[2] = 30; // assign value 30 to the third element
     numbers[3] = 40; // assign value 40 to the fourth element
     numbers[4] = 50; // assign value 50 to the fifth element
+
+    // numbers[5] = 60; // this will throw an ArrayIndexOutOfBoundsException
 
     System.out.println("The first number is: " + numbers[0]); // prints 10
     System.out.println("The second number is: " + numbers[1]); // prints 20
