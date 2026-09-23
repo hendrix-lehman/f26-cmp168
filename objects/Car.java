@@ -1,10 +1,13 @@
-// add package name here if needed
-//
 class Car {
   // member variables
   private String make; // identifier, member variable, instance variable
   private String model;
   private int year;
+  private final String secretEngineSound = "Vroom Vroom!"; // private member variable
+
+  private Passenger[] passengers; // array of Passenger objects
+
+  public static final int MAX_PASSENGERS = 4; // constant
 
   // constructor
   // overloading constructors
@@ -33,6 +36,7 @@ class Car {
     this.make = make;
     this.model = model;
     this.year = year;
+    this.passengers = new Passenger[MAX_PASSENGERS]; // default to 4 passengers
   }
 
   // methods
@@ -49,23 +53,66 @@ class Car {
   public int getYear() {
     return year;
   }
+
+  // public Passenger[] getPassengers() {
+    // return passengers;
+  // }
   
   // setters
-  public void setMake(String make) {
-    this.make = make;
+  // public void setMake(String make) {
+  //   this.make = make;
+  // }
+
+  // public void setModel(String model) {
+  //   this.model = model;
+  // }
+
+  // public void setYear(int year) {
+  //   this.year = year;
+  // }
+
+  // public void setPassengers(Passenger[] passengers) {
+  //   if (passengers.length > MAX_PASSENGERS) {
+  //     System.out.println("Cannot set passengers. Exceeds maximum capacity of " + MAX_PASSENGERS);
+  //     return;
+  //   }
+  //   this.passengers = passengers;
+  // }
+  public void addPassenger(Passenger passenger) {
+    for (int i = 0; i < passengers.length; i++) {
+      if (passengers[i] == null) {
+        passengers[i] = passenger;
+        return;
+      }
+    }
+    System.err.println("Cannot add passenger. Car is full.");
   }
 
-  public void setModel(String model) {
-    this.model = model;
+  public void removePassenger(Passenger passenger) {
+    for (int i = 0; i < passengers.length; i++) {
+      if (passengers[i] == passenger) {
+        passengers[i] = null;
+        Passenger.decrementPassengerCount();
+        return;
+      }
+    }
+    System.err.println("Cannot remove passenger. Passenger not found.");
   }
 
-  public void setYear(int year) {
-    this.year = year;
+  public int getPassengerCount() {
+    int count = 0;
+    for (Passenger p : passengers) {
+      if (p != null) {
+        count++;
+      }
+    }
+    return count;
+    // return Passenger.getPassengerCount();
   }
 
   // behaviors (things the car can do)
   public void turbo() {
-    System.out.println("Vroom! The " + make + " " + model + " is going turbo!");
+    System.out.println(secretEngineSound + " The " + make + " " + model + " is going turbo!");
   }
 
   // operations
