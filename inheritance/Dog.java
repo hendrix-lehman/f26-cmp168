@@ -5,7 +5,13 @@ class Dog extends Animal {
   }
 
   @Override
-  public String toString(int a) {
+  public String getName() {
+    System.out.println("Getting dog name: " + super.getName());
+    return super.getName();
+  }
+
+  @Override
+  public String toString() {
     String dogInfo = String.format("Dog Name: %s, Age: %d", getName(), getAge());
     return dogInfo;
   }

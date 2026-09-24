@@ -16,15 +16,26 @@ class Animal {
     return age;
   }
 
-  public String toString(int abc) {
-
-    return "Hello";
-  }
+//   public String toString(int abc) {
+//     return "Hello";
+//   }
 
   @Override
   public String toString() {
     String animalInfo = String.format("Animal Name: %s, Age: %d", name, age);
     return animalInfo;
+  }
+
+  class AnimalToy {
+    private String toyName;
+
+    public AnimalToy(String toyName) {
+      this.toyName = toyName;
+    }
+
+    public String getToyName() {
+      return toyName;
+    }
   }
 
 }

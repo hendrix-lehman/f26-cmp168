@@ -5,7 +5,7 @@ class UberDog extends Dog {
   }
 
   @Override
-  public String toString(int a) {
+  public String toString() {
     String uberDogInfo = String.format("UberDog Name: %s, Age: %d", getName(), getAge());
     return uberDogInfo;
   }
