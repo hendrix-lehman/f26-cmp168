@@ -1,0 +1,3 @@
+interface Playful {
+  void play();
+}
