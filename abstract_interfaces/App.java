@@ -22,6 +22,10 @@ class App {
     Animal animal = new Dog();
     animal.makeNoise();
 
+    // NOT ALLOWED to create an instance of an abstract class
+    // Animal animal2 = new Animal();
+    //
+
     // see 3 casting examples below
     //
     // RECOMMENDED: safe casting
@@ -38,5 +42,38 @@ class App {
 
     // cannot instantiate an interface
     // Playful playful = new Playful();
+    //
+    Fish fish = new Fish("Nemo");
+    // fish.makeNoise();
+    fish.swim();
+    fish.play();
+
+    Animal[] animals = {dog, fish};
+    for (Animal a : animals) {
+      testAnimal(a);
+      if (a instanceof Playful playful) {
+        testAnimal(playful);
+      }
+      if (a instanceof Swimmable swimmable) {
+        testAnimal(swimmable);
+      }
+    }
+
+    // cannot instantiate an interface
+    // Swimmable swimmable = new Swimmable();
+
+  }
+
+  // using polymorphism to call the makeNoise method on any Animal object
+  public static void testAnimal(Animal animal) {
+    animal.makeNoise();
+  }
+
+  public static void testAnimal(Playful playful) {
+    playful.play();
+  }
+
+  public static void testAnimal(Swimmable swimmable) {
+    swimmable.swim();
   }
 }
